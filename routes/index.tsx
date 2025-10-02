@@ -1,36 +1,24 @@
-import { useSignal } from "@preact/signals";
 import { Head } from "fresh/runtime";
 import { define } from "../utils.ts";
-import Counter from "../islands/Counter.tsx";
+import NotesManager from "../islands/NotesManager.tsx";
 
 export default define.page(function Home(ctx) {
-  const count = useSignal(3);
-
   console.log("Shared value " + ctx.state.shared);
 
   return (
-    <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
+    <div class="px-4 py-8 mx-auto bg-base-100 min-h-screen">
       <Head>
-        <title>Fresh counter</title>
+        <title>노트 관리 앱</title>
       </Head>
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <div>
-        <input type="checkbox" checked="checked" class="toggle" />
-
+      <div class="max-w-screen-lg mx-auto">
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold mb-2">📝 노트 관리 시스템</h1>
+          <p class="text-base-content/70">
+            Deno KV를 사용한 실시간 노트 저장 및 관리
+          </p>
         </div>
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
+
+        <NotesManager />
       </div>
     </div>
   );
